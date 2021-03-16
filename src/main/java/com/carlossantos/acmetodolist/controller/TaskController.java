@@ -40,6 +40,13 @@ public class TaskController {
 		return new ResponseEntity<>(taskService.updateTaskList(id, task), HttpStatus.OK);
 	}
 	
+	@CrossOrigin
+	@PutMapping("/donetask/{id}")
+	public ResponseEntity<?> updateTaskForDone(@PathVariable (value = "id") Long id,
+												@RequestBody @Valid String isDone){
+		return new ResponseEntity<>(taskService.updateTaskForDone(id, isDone), HttpStatus.OK);
+	}
+	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteTask(@PathVariable (value = "id") Long id){
 		taskService.deleteTask(id);

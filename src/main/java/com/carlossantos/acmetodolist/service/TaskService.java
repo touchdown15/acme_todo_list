@@ -52,6 +52,31 @@ public class TaskService {
 		}
 	}
 	
+	public Task updateTaskForDone(Long id, String isDone) {
+		Optional<Task> taskById = this.taskRepository.findById(id);
+		String done = isDone;
+		boolean bool;
+		
+		if(done.contains("true")) {
+			bool = true;
+		}else {
+			bool = false;
+		}
+		
+		if(taskById.isPresent()) {
+			Task taskForUpdate = taskById.get();
+			taskForUpdate.setDone(bool);
+			
+			return this.taskRepository.save(taskForUpdate);
+			
+		}else {
+			//TODO exception
+			return null;
+		}
+		
+		
+	}
+	
 	public void deleteTask(Long id) {
 		Optional<Task> taskById = this.taskRepository.findById(id);
 		
