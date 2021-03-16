@@ -51,6 +51,7 @@ public class ToDoListController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
+	@CrossOrigin
 	@PutMapping("/{id}")
 	public ResponseEntity<?> updateList(@PathVariable (value = "id") Long id,
 										@RequestBody @Valid ToDoList toDoList){
@@ -58,6 +59,7 @@ public class ToDoListController {
 		return new ResponseEntity<>(toDoListService.updateList(id, toDoList), HttpStatus.OK);
 	}
 	
+	@CrossOrigin
 	@PutMapping("/addtask/{id}")
 	public ResponseEntity<?> updateTaskList(@PathVariable (value = "id") Long id,
 											@RequestBody @Valid ToDoList toDoList){

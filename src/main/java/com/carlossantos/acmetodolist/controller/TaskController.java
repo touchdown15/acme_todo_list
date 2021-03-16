@@ -34,6 +34,7 @@ public class TaskController {
 		return new ResponseEntity<>(taskService.listAllTaskById(id), HttpStatus.OK);
 	}
 	
+	@CrossOrigin
 	@PutMapping("/{id}")
 	public ResponseEntity<?> updateTaskList(@PathVariable (value = "id") Long id,
 											@RequestBody @Valid Task task){
